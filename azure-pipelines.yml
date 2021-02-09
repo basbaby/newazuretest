@@ -71,14 +71,9 @@ steps:
     goals: 'test $(MAVEN_OPTS_TEST)'
     sqMavenPluginVersionChoice: 'pom'
   displayName: Cucumber Test
-- task: PublishTestResults@2
+- task: PublishCucumberReport@1
   inputs:
-    testResultsFiles: '**/TEST-*.xml' 
-    #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
-    mergeTestResults: true # Optional
-    #failTaskOnFailedTests: false # Optional
-    # testRunTitle: APIOPS-MUNIT
-    #buildPlatform: # Optional
-    #buildConfiguration: # Optional
-    publishRunAttachments: true # Optional 
-  displayName: Publish Cucumber Test        
+    jsonDir: '$(System.DefaultWorkingDirectory)'
+    outputPath: '$(Sytem.DefaultWorkingDirectory)'
+    theme: 'bootstrap'
+    reportSuiteAsScenarios: true
