@@ -59,18 +59,6 @@ steps:
     #buildConfiguration: # Optional
     publishRunAttachments: true # Optional 
   displayName: MUNIT Test  
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'test $(MAVEN_OPTS_TEST)'
-    sqMavenPluginVersionChoice: 'pom'
-  displayName: Cucumber Test
 - task: PublishCucumberReport@1
   inputs:
     jsonDir: '$(System.DefaultWorkingDirectory)'
